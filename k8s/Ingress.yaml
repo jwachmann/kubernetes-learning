@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: http-test-service
+  labels:
+    name: http-test-service
+spec:
+  rules:
+  - host: http-test-service.info
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: http-test-service
+            port:
+              number: 8081

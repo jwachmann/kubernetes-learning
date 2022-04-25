@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: http-test-service
+spec:
+  selector:
+    matchLabels:
+      app: http-test-service
+  template:
+    metadata:
+      labels:
+        app: http-test-service
+    spec:
+      containers:
+      - name: http-test-service
+        image: wachmann.dev/http-test-service:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "100m"
+        ports:
+        - containerPort: 8080
